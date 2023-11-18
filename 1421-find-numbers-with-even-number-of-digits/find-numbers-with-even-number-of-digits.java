@@ -7,7 +7,6 @@ class Solution {
                 nums[i]=nums[i]/10;
                 ic++;
             }
-            System.out.println(ic);
             if(ic%2==0){
                 c++;
             }            
