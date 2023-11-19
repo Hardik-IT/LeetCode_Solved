@@ -7,12 +7,14 @@ class Solution {
         while(start < end){
 
             int mid = start + (end-start)/2;
-            System.out.println(mid);
+            System.out.println("m"+mid);
             if(arr[mid] > arr[mid+1]){
                 end = mid;
             }else {
                 start = mid + 1;
             }
+              System.out.println(start);
+                System.out.println(end);
         }
         return start;
     }
