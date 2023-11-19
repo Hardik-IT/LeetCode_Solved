@@ -1,10 +1,9 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] ans = {-1,-1};
-        int start = searchIndex(nums,target,true);
-        int end = searchIndex(nums,target,false);
-        ans[0] = start;
-        ans[1] = end;
+        ans[0] = searchIndex(nums,target,true);
+        if(ans[0] != -1)
+          ans[1]= searchIndex(nums,target,false);
         return ans; 
     }
     int searchIndex(int[] nums,int target,boolean firstOcc) {
