@@ -10,6 +10,9 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+        if(head == null || head.next == null){
+            return;
+        }
         ListNode mid = middleNode(head);
         ListNode headSecond = reverseList(mid);
         ListNode headFirst = head;
