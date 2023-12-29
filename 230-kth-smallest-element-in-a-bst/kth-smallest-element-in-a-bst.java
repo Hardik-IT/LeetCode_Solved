@@ -14,23 +14,43 @@
  * }
  */
 class Solution {
-    int count=0;
-    public int kthSmallest(TreeNode root, int k) {
-     
-        return  helper(root,k).val;
+    // int count=0;
+    // public int kthSmallest(TreeNode root, int k) {
+    //     return  helper(root,k).val;
+    // }
+    // public TreeNode helper(TreeNode root,int k){
+    //     if(root == null){
+    //         return null;
+    //     }
+    //     TreeNode left = helper(root.left,k);
+    //     if(left!= null){
+    //         return left;
+    //     }
+    //     count++;
+    //     if(count == k){
+    //         return root;
+    //     }
+    //     return helper(root.right,k);
+    // }
+        public int kthSmallest(TreeNode root, int k) {
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        helper(root,minHeap,k);
+
+        //remove k elements
+        int ans=0;
+        for(int i=0;i<k;i++){
+            ans = minHeap.poll();
+        }
+        return ans;
     }
-    public TreeNode helper(TreeNode root,int k){
-           if(root == null){
-            return null;
+
+    private void helper(TreeNode node, PriorityQueue<Integer> minHeap, int k) {
+        if (node==null){
+            return;
         }
-        TreeNode left = helper(root.left,k);
-        if(left!= null){
-            return left;
-        }
-        count++;
-        if(count == k){
-            return root;
-        }
-        return helper(root.right,k);
+        helper(node.left,minHeap,k);
+            minHeap.add(node.val);
+        helper(node.right,minHeap,k);
     }
 }
