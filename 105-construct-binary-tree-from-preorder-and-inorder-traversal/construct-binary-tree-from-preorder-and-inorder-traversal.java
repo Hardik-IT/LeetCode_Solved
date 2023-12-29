@@ -14,26 +14,59 @@
  * }
  */
 class Solution {
+
+   
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         
-        if(preorder.length == 0){
+    //     if(preorder.length == 0){
+    //         return null;
+    //     }
+
+    //     int r = preorder[0];
+    //     int index= 0 ;
+
+    //     for(int i=0;i<inorder.length;i++){
+    //         if(inorder[i]==r){
+    //             index=i;
+    //         }
+    //     }
+
+    //     TreeNode node = new TreeNode(r);
+
+    //     node.left = buildTree(Arrays.copyOfRange(preorder,1,index+1),Arrays.copyOfRange(inorder,0,index));
+    //     node.right = buildTree(Arrays.copyOfRange(preorder,index+1,preorder.length),Arrays.copyOfRange(inorder,index+1,inorder.length));
+
+    //     return node;
+    // }
+
+        HashMap<Integer,Integer> hashmap = new HashMap<>();
+         int[] index = {0};
+        for(int i=0;i<inorder.length;i++){
+            hashmap.put(inorder[i],i);
+        }
+
+          return helper(preorder,inorder,0,preorder.length-1,hashmap,index);
+    }
+
+
+    public TreeNode helper(int[] preorder,int[] inorder,int l,int r,HashMap<Integer,Integer> hashmap,int[] index){
+        if(l > r){
             return null;
         }
 
-        int r = preorder[0];
-        int index= 0 ;
+        int current = preorder[index[0]];
+        index[0]++;
 
-        for(int i=0;i<inorder.length;i++){
-            if(inorder[i]==r){
-                index=i;
-            }
+        TreeNode node = new TreeNode(current);
+        if(l == r){
+            return node;
         }
+        int inorderIndex = hashmap.get(current);
 
-        TreeNode node = new TreeNode(r);
 
-        node.left = buildTree(Arrays.copyOfRange(preorder,1,index+1),Arrays.copyOfRange(inorder,0,index));
-        node.right = buildTree(Arrays.copyOfRange(preorder,index+1,preorder.length),Arrays.copyOfRange(inorder,index+1,inorder.length));
+        node.left = helper(preorder,inorder,l,inorderIndex - 1,hashmap,index);
+        node.right = helper(preorder,inorder,inorderIndex + 1,r,hashmap,index);
 
         return node;
     }
-}
+}      
