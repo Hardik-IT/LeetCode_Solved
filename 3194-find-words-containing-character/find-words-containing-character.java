@@ -4,6 +4,7 @@ class Solution {
         for(int i=0;i<words.length;i++){
             if(words[i].contains(x+"")){
                 list.add(i);
+                continue;
             }
         }
         return list;
