@@ -14,26 +14,23 @@
  * }
  */
 class Solution {
+    private int k;
+    private int ans=0;
     public int kthSmallest(TreeNode root, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
-        helper(root,minHeap,k);
-        int ans=0;
-        for(int i=0;i<k;i++){
-             ans=minHeap.poll();
-        }
+        this.k =k;
+        helper(root);
         return ans;
-
     }
 
-    private void helper(TreeNode node,PriorityQueue<Integer> minHeap,int k){
+    private void helper(TreeNode node){
         if(node==null){
             return;
         }
-        helper(node.left,minHeap,k);
+        helper(node.left);
+        k--;
+        if(k==0)
+        ans=node.val;
 
-        minHeap.add(node.val);
-
-        helper(node.right,minHeap,k);
+        helper(node.right);
     }
 }
