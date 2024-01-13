@@ -1,6 +1,6 @@
 class Solution {
     public int numSpecial(int[][] matrix) {
-        int fc=0;
+        int countSpecial=0;
         for(int row=0;row<matrix.length;row++){
             for(int col=0;col<matrix[0].length;col++){
                 if(matrix[row][col]==1){
@@ -14,11 +14,11 @@ class Solution {
                     }
 
                     if(rowSum==1 && colSum==1){
-                        fc++;
+                        countSpecial++;
                     }
                 }
             }
         }
-        return fc;
+        return countSpecial;
     }
 }
