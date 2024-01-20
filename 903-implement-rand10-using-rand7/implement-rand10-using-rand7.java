@@ -5,12 +5,20 @@
  */
 class Solution extends SolBase {
     public int rand10() {
-        int a=rand7();
-        int b=rand7();
-        int val=(a-1)*7+b;
-        if(val > 40) 
-           return rand10();
-        else
-            return val%10+1;
+        int t1 = rand7();
+        while(t1>5) t1 = rand7();
+        int t2 = rand7();
+        while(t2==7) t2 = rand7();
+
+        if(t2<=3) return t1;
+        return t1+5;
+     
+        // int a=rand7();
+        // int b=rand7();
+        // int val=(a-1)*7+b;
+        // if(val > 40) 
+        //    return rand10();
+        // else
+        //     return val%10+1;
     }
 }
