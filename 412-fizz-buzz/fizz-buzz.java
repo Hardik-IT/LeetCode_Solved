@@ -1,19 +1,19 @@
 class Solution {
   public List<String> fizzBuzz(int n) {
-        List<String> list=new ArrayList<>();
-        while(n!=0){
-            if(n%3==0 && n%5 == 0){
-                list.add("FizzBuzz");
-            }else if(n%3==0){
-                list.add("Fizz");
-            }else if(n%5==0){
-                list.add("Buzz");
-            }else{
-                list.add(""+n);
-            }
-            n--;
+        List<String> res= new ArrayList<>();
+        int i=1;
+        while(i<=n){
+        if(i%3==0 && i%5==0){
+            res.add("FizzBuzz");
+        }else if(i%3==0){
+            res.add("Fizz");
+        }else if(i%5==0){
+            res.add("Buzz");
+        }else{
+            res.add(i+"");
         }
-        Collections.reverse(list);
-        return list;
+        i++;
+        }
+        return res;
     }
 }
