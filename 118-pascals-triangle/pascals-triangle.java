@@ -1,5 +1,6 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
+        // TC O(n * n * r) ~ O (n^3) SC O(1)
         List<List<Integer>> ans=new ArrayList<>();
         for(int row=1;row<=numRows;row++){
             List<Integer> temp = new ArrayList<>();
