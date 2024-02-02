@@ -1,7 +1,8 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-       int count1=0,count2=0;
-       int el1=Integer.MIN_VALUE,el2=Integer.MIN_VALUE;
+        //TC - O(N) + O(N) SC O(1)
+        int count1=0,count2=0;
+        int el1=Integer.MIN_VALUE,el2=Integer.MIN_VALUE;
         for(int i=0;i<nums.length;i++){
            if(count1==0 && nums[i] != el2){
                count1++;
@@ -17,7 +18,7 @@ class Solution {
                count1--;
                count2--;
            }
-       }
+        }
         count1 = 0;
         count2 = 0;
         for(int i = 0; i < nums.length; i++) {
@@ -32,8 +33,8 @@ class Solution {
         list.add(el1);
         if(count2>(nums.length/3) &&  el1 != el2)
         list.add(el2);
-            Collections.sort(list);
-            return list;
+        Collections.sort(list);
+        return list;
     }
 
 }
