@@ -13,32 +13,24 @@ class Solution {
         if(head==null){
             return null;
         }
-
-        ListNode node=head;  
-        int count = 0;     
-        while(node!=null){
-            count++;
-            node = node.next;
-        }
-        if(count == n){
-            ListNode newHead = head.next;
-            head = null;
-            return newHead;
+        ListNode fast = head;
+       
+        for(int i=0;i<n;i++){
+            fast = fast.next;
         }
 
-
-        int del = count - n;
-        node=head; 
-        while(node != null){
-            del--;
-            if(del == 0){  
-                break;
-            }
-            node = node.next;
+        if(fast == null){
+            return head.next;
         }
 
-        ListNode delNode = node.next;
-        node.next = node.next.next;
+        ListNode slow = head;
+        while(fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        ListNode delNode = slow;
+        slow.next = slow.next.next;
         delNode = null;
         return head;
     }
