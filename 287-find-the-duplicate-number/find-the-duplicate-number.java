@@ -1,23 +1,13 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        int i=0;
-        while(i < nums.length){
-            if(nums[i] != i+1){
-                int correct=nums[i]-1;
-                if( nums[i] != nums[correct]){
-                swap(nums,i,correct);
-                }else{
-                    return nums[i];
-                }
-            }else{
-                i++;
-            }
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+        }
+        for(int i=0;i<nums.length;i++){
+           int c =  hm.getOrDefault(nums[i],0);
+           if(c > 1) return nums[i];
         }
         return -1;
-    }
-    public void swap(int[] arr,int f, int l)    { 
-        int temp = arr[f];
-        arr[f]=arr[l];
-        arr[l]=temp;
     }
 }
