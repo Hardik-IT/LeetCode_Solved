@@ -1,25 +1,14 @@
 class Solution {
-    public List<Integer> findDuplicates(int[] nums)     {
-        List<Integer> duplicates = new ArrayList<>();
-        int i=0;
-        while(i < nums.length){
-                int correct=nums[i]-1;
-                if( nums[i] != nums[correct]){
-                swap(nums,i,correct);
-                }else{
-                    i++;
-                }
+    public List<Integer> findDuplicates(int[] nums) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            if(!hm.containsKey(nums[i]))
+                hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+            else{
+                res.add(nums[i]);
+            }
         }
-        for(int k=0;k<nums.length;k++){
-            if(nums[k]!=k+1)
-            duplicates.add(nums[k]);
-        }
-        return duplicates;
+        return res;
     }
-    public void swap(int[] arr,int f, int l)    { 
-        int temp = arr[f];
-        arr[f]=arr[l];
-        arr[l]=temp;
-    }
-    
 }
