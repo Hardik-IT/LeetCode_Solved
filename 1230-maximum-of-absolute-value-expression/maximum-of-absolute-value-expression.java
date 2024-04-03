@@ -1,6 +1,6 @@
 class Solution {
     public int maxAbsValExpr(int[] x, int[] y) {
-        int max1 = Integer.MIN_VALUE;
+         int max1 = Integer.MIN_VALUE;
         int max2 = Integer.MIN_VALUE;
         int max3 = Integer.MIN_VALUE;
         int max4 = Integer.MIN_VALUE;
@@ -24,6 +24,5 @@ class Solution {
         }    
             return Math.max(Math.max(max1-min1,max2-min2),
             Math.max(max3-min3,max4-min4));
-        
     }
 }
