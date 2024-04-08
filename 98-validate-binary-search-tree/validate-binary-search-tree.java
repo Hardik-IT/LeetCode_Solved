@@ -14,27 +14,28 @@
  * }
  */
 class Solution {
-   public boolean isValidBST(TreeNode root) {
-       return helper(root,null,null);
-    }
-
-    private boolean helper(TreeNode node, Integer low, Integer high) {
-        if(node == null){
+    boolean firstNode = true;
+    boolean ans = true;
+    TreeNode prevNode = null;
+    public boolean isValidBST(TreeNode root) {
+        if(root==null){
             return true;
+        } 
+        helper(root);
+        return ans;
+    }
+    private void helper(TreeNode root){
+        if(root==null){
+            return;
+        } 
+        helper(root.left);
+        if(firstNode == true){
+            firstNode = false;
+        }else if(prevNode.val >= root.val){
+            ans = false;
+            return;
         }
-
-        if(low != null && node.val <= low){
-            return false;
-        }
-
-        if(high != null && node.val >= high){
-            return false;
-        }
-
-        boolean leftTree = helper(node.left,low,node.val);
-        boolean rightTree = helper(node.right, node.val, high);
-
-        return leftTree && rightTree;
-
+        prevNode = root;
+        helper(root.right);
     }
 }
