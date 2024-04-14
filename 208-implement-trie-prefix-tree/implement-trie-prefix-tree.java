@@ -1,19 +1,17 @@
-class Node {
+class Node{
     Node links[] = new Node[26];
-    boolean flag=false;
-
+    boolean flag = false;
     public Node(){
 
     }
-
     boolean containsKey(char ch){
-        return (links[ch-'a']!=null);
+        return links[ch-'a']!=null;
     }
     void put(char ch,Node node){
         links[ch-'a']=node;
     }
     Node get(char ch){
-         return links[ch-'a'];
+        return links[ch-'a'];
     }
     boolean setEnd(){
         flag=true;
@@ -23,20 +21,17 @@ class Node {
         return flag;
     }
 }
-
 class Trie {
-
-    private static Node root;
+    private Node root;
     public Trie() {
-        root = new Node();   
+        root = new Node();
     }
     
     public void insert(String word) {
         Node node = root;
         for(int i=0;i<word.length();i++){
-            if(!node.containsKey(word.charAt(i))){
+            if(!node.containsKey(word.charAt(i)))
                 node.put(word.charAt(i),new Node());
-            }
             node = node.get(word.charAt(i));
         }
         node.setEnd();
@@ -50,7 +45,7 @@ class Trie {
             node = node.get(word.charAt(i));
         }
         if(node.isEnd())
-            return true;
+            return true; 
         return false;
     }
     
@@ -59,7 +54,7 @@ class Trie {
         for(int i=0;i<prefix.length();i++){
             if(!node.containsKey(prefix.charAt(i)))
                 return false;
-            node = node.get(prefix.charAt(i));
+            node=node.get(prefix.charAt(i));
         }
         return true;
     }
