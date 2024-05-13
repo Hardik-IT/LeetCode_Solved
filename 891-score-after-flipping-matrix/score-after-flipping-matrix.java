@@ -26,7 +26,7 @@ class Solution {
         int score = 0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                int val = grid[i][j] * (int)Math.pow(2,m-j-1);
+                int val = grid[i][j] << (m-j-1);
                 score += val;
             }
         }
