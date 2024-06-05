@@ -2,11 +2,9 @@ class Solution {
     public List<String> commonChars(String[] words) {
         List<String> res = new ArrayList<>();
         HashMap<Character,Integer> hm = new HashMap<>();
-            for(char c : words[0].toCharArray()){
+        for(char c : words[0].toCharArray()){
                     hm.put(c,hm.getOrDefault(c,0)+1);
-            }
-
-        
+        }
         for (int i = 1; i < words.length; i++) {
             Map<Character, Integer> wordCount = new HashMap<>();
             for (char c : words[i].toCharArray()) {
