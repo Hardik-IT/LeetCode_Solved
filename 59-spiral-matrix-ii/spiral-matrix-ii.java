@@ -1,34 +1,28 @@
 class Solution {
     public int[][] generateMatrix(int n) {
-        int[][] matrix = new int[n][n];
-        int minR=0,minC=0,maxC=n-1,maxR=n-1;
-        int c=1;
-        while(c <= n*n){
-            //top wall
-            for(int col=minC;col <= maxC;col++){
-                matrix[minR][col] = c;
-                c++;
+       int[][] matrix = new int[n][n];
+       int minR=0,minC=0;
+       int maxC=n-1,maxR=n-1;
+       int count = 1;
+       while(count<= n*n){
+
+            for(int i=minC; i <= maxC; i++){
+                matrix[minR][i] = count++;
             }
             minR++;
-            //right wall
-            for(int row=minR;row <= maxR;row++){
-                matrix[row][maxC] = c;
-                c++;
+            for(int i=minR; i <= maxR; i++){
+                matrix[i][maxC] = count++;
             }
             maxC--;
-            //bottom wall
-            for(int col = maxC; col>= minC;col--){
-                matrix[maxR][col] = c;
-                c++;
+            for(int i=maxC ; i >= minC; i--){
+                matrix[maxR][i] = count++;
             }
             maxR--;
-            //left wall
-            for(int row=maxR; row >= minR; row--){
-                matrix[row][minC] = c;
-                c++;
+            for(int i=maxR; i >= minR; i--){
+                matrix[i][minC] = count++;
             }
             minC++;
-        }
-        return matrix;
+       }
+       return matrix;
     }
 }
