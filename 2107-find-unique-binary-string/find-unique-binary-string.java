@@ -1,13 +1,23 @@
 class Solution {
     public String findDifferentBinaryString(String[] nums) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i].charAt(i) == '0') {
-                result.append('1');
-            } else {
-                result.append('0');
+
+        int n = nums.length;
+        int size = (int)Math.pow(2, n);
+
+        int[] nu = new int[size];
+
+        for(String num : nums){
+            int val = Integer.parseInt(num, 2);
+            nu[val]++;
+        }
+
+        for(int i = 0; i < size; i++){
+            if(nu[i] == 0){
+                String ans = Integer.toBinaryString(i);
+                return "0".repeat(n - ans.length()) + ans;
             }
         }
-        return result.toString();
+
+        return "0".repeat(n);
     }
 }
